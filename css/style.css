@@ -12,7 +12,6 @@
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 50px;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -38,6 +37,7 @@ body {
    margin-right: -20px;
    margin-left: -20px;
    margin-top: -20px;
+   border-bottom: 1px solid #373737;
  }
 
  .logo {
@@ -68,15 +68,27 @@ body {
 
  #selection {
    width: 300px;
-   height: 160px;
+   height: 170px;
    margin-left : -5px;
-   margin-top: 15px;
+   margin-top: 25px;
  }
 
  .slc_img:hover {
    opacity: 0.5;
    transition: 1s;
+ }
 
+ /*
+  * Titre de Menu
+ */
+
+ .titre_menu {
+   font-size: 16px;
+   padding-left: 20px;
+   font-weight: bold;
+   text-transform: uppercase;
+   text-shadow: 0px 1px 0px black;
+   color : #1d5d2c;
  }
 
 /*
@@ -105,30 +117,61 @@ body {
 }
 
 /* Sidebar navigation */
+
+li {
+  margin: 22px 0;
+}
+
 .nav-sidebar {
   margin-right: -21px; /* 20px padding + 1px border */
   margin-bottom: 20px;
   margin-left: -20px;
+  text-decoration: none;
 }
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
+  padding-top: 10px;
+  margin: 0 0 3px 0;
+  padding-bottom: 10px;
   color : white;
+  background-color: #1d1c27;
+  text-decoration: none;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
+  text-decoration: none;
   background-color: none;
 }
 
+.nav-sidebar > li > a:hover {
+ opacity: 0.5;
+ transition: 0.5s;
+}
+
+.ru {
+  color : #3e3ee6;
+}
+
+/*
+ * Tooltip colors
+ */
+
+ .green-tooltip + .tooltip.top > .tooltip-arrow {
+   background-color: #247236;
+ }
 
 /*
  * Main content
  */
 
 .main {
-  padding: 20px;
+  padding: 0px;
+  margin-left: 300px;
 }
 @media (min-width: 768px) {
   .main {
