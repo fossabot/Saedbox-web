@@ -42,12 +42,42 @@ body {
 
  .logo {
    font-size : 24px;
+   font-weight: bold;
+   text-shadow: 1px 2px 1px black;
  }
 
  .logo_img {
-   padding-right: 10px;
+   padding-left: 10px;
+   padding-right: 30px;
  }
 
+ .subtext {
+   position: absolute;
+   font-size : 12px;
+   font-weight: bold;
+   margin-left: -65px;
+   margin-top: 25px;
+   text-shadow: 1px 1px 1px black;
+   color : #1d5d2c;
+ }
+
+
+/*
+ * Selection
+*/
+
+ #selection {
+   width: 300px;
+   height: 160px;
+   margin-left : -5px;
+   margin-top: 15px;
+ }
+
+ .slc_img:hover {
+   opacity: 0.5;
+   transition: 1s;
+
+ }
 
 /*
  * Sidebar
