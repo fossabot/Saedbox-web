@@ -10,10 +10,15 @@
  * Base structure
  */
 
+ html {
+   overflow: hidden;
+ }
+
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   font-family: 'Source Sans Pro', sans-serif;
   background-color: #f4f5f7;
+  overflow: hidden;
 }
 
 
@@ -69,7 +74,7 @@ body {
 
  #selection {
    width: 300px;
-   height: 170px;
+   height: 160px;
    margin-left : -5px;
    margin-top: 25px;
  }
@@ -87,7 +92,7 @@ body {
  }
 
  .box1:after {
-  content: "\f087";
+  content: "\f022";
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
@@ -112,6 +117,20 @@ body {
    border-top-right-radius: 4px;
  }
 
+ .box2:after {
+  content: "\f085";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  position: absolute;
+  font-size: 50px;
+  color: white;
+  top: 0%;
+  left: 30%;
+  z-index: 1;
+}
+
  .box3 {
    margin-left: -5px;
    margin-top: 2px;
@@ -124,6 +143,20 @@ body {
    border-bottom-left-radius: 4px;
  }
 
+ .box3:after {
+  content: "\f0c0";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  position: absolute;
+  font-size: 50px;
+  color: white;
+  top: 0%;
+  left: 30%;
+  z-index: 1;
+}
+
  .box4 {
    margin-top: 2px;
    position: relative;
@@ -135,6 +168,20 @@ body {
    border-left: 2px solid #272634;
    border-bottom-right-radius: 4px;
  }
+
+ .box4:after {
+  content: "\f007";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  position: absolute;
+  font-size: 50px;
+  color: white;
+  top: 0%;
+  left: 35%;
+  z-index: 1;
+}
 
  .box1:hover {
    opacity: 0.5;
@@ -246,25 +293,6 @@ li {
 }
 
 /*
- * Placeholder dashboard ideas
- */
-
-.placeholders {
-  margin-bottom: 30px;
-  text-align: center;
-}
-.placeholders h4 {
-  margin-bottom: 0;
-}
-.placeholder {
-  margin-bottom: 20px;
-}
-.placeholder img {
-  display: inline-block;
-  border-radius: 50%;
-}
-
-/*
  * Icons
  */
 
@@ -288,6 +316,43 @@ li {
    overflow: hidden;
    background-color: white;
    box-shadow: 0 3px 2px -2px #c5c7dc;
+   padding-top: 10px;
+   padding-left: 10px;
+ }
+
+ .btn-primary {
+   background-color: #43568a !important;
+   border-color: #3d4e7d !important;
+   margin-left: 5px;
+ }
+
+ .btn-primary-stop {
+   color: white;
+   background-color: #cd3434 !important;
+   border-color: #b72f2f !important;
+   margin-left: 5px;
+ }
+
+ .btn-primary:hover {
+   color: #43568a;
+   background-color: #fff !important;
+   border-color: #43568a !important;
+   transition: 0.5s;
+ }
+
+ .btn-primary-stop:hover {
+   color: #cd3434;
+   background-color: #fff !important;
+   border-color: #cd3434 !important;
+   transition: 0.5s;
+ }
+
+ .vr {
+   width: 1px;
+   height: 100%;
+   border-left: 2px solid #e0e1e2;
+   margin-left: 15px;
+   margin-right: 10px;
  }
 
  .section_title {
