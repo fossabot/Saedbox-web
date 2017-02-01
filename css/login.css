@@ -1,0 +1,53 @@
+/* Login page */
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #247236;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  margin-left : 40%;
+  margin-top : 10%;
+  position: relative ;
+}
+
+.col-md-2 {
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 3px;
+  box-shadow: 0px 3px #14401e;
+}
+
+.otp {
+  opacity: 0.5;
+}
+
+.otp:hover {
+  opacity: 1;
+}
+
+.lost {
+  font-size : 12px;
+  color : grey;
+}
+
+.otp_q {
+  position: absolute;
+  margin-left: 250px;
+  margin-top: -10px;
+  font-size: 12px;
+  color : grey;
+  float: right;
+}
+
+.checkbox {
+  margin-top: -30px;
+}
+
+.panel-title {
+  padding-bottom: 10px;
+}
