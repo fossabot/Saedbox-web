@@ -1,84 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>Saedbox Panel</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
-    <!-- Saedbox CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
+    <title>saedbox</title>
   </head>
-
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <div id="logo">
-            <h1 class="logo"><img src="img/logo.png" class="logo_img">Administration<span class="subtext"><br/>saedbox v1.2</span></h1>
-          </div>
-          <div id="selection">
-            <a href="/"><div class="box1" data-toggle="tooltip" data-placement="top" title="Applications"></div></a><a href="/"><div class="box2" data-toggle="tooltip" data-placement="top" title="Configuration"></div></a>
-            <a href="/"><div class="box3" data-toggle="tooltip" data-placement="bottom" title="Gestion Utilisateurs"></div></a><a href="/"><div class="box4" data-toggle="tooltip" data-placement="bottom" title="Profil"></div></a>
-          </diV>
-          <ul class="nav nav-sidebar">
-            <li><span class="titre_menu">Applications installées</span></a></li>
-            <li><a href="#" class="green-tooltip" data-toggle="tooltip" data-html="true" data-placement="right" title="ip.local/rutorrent"><i class="fa fa-arrow-down ru" aria-hidden="true"></i>&nbsp;Rutorrent</a></li>
-            <li><a href="#">CouchPotato</a></li>
-            <li><a href="#">Emby</a></li>
-            <li><a href="#">Sickrage</a></li>
-            <li><a href="#">Headphones</a></li>
-            <li><a href="#">File Manager</a></li>
-            <li><span class="titre_menu">Statistiques du serveur</span></a></li>
-			<div id="system">
-            <div class="text-xs-left" id="example-caption-1">CPU : {{ cpu }}%</div>
-            <progress class="progress progress-success" :value="cpu" max="100"></progress><br/>
-            <div class="text-xs-left" id="example-caption-1">RAM : {{ ram }}%</div>
-            <progress class="progress progress-danger" :value="ram" max="100"></progress>
-            <div class="text-xs-left" id="example-caption-1">1TB/10TB</div>
-            <progress class="progress progress-success" value="10" max="100"></progress>
-			</div>
-          </ul>
-        </div>
-        <div class="main">
-          <div class="menubar">
-            <a href="#" class="btn btn-sq-sm btn-primary"><i class="fa fa-plus fa-2x"></i><br/>Ajouter</a><span class="vr"></span><a href="#" class="btn btn-sq-sm btn-primary"><i class="fa fa-play fa-2x"></i><br/>Démarrer</a><a href="#" class="btn btn-sq-sm btn-primary-stop"><i class="fa fa-stop fa-2x"></i><br/>Arrêter</a><a href="#" class="btn btn-sq-sm btn-primary"><i class="fa fa-refresh fa-2x"></i><br/>Relancer</a><a href="#" class="btn btn-sq-sm btn-primary"><i class="fa fa-minus fa-2x"></i><br/>Supprimer</a>
-          </div>
-          <div class="section_title">
-            <span class="section_title_text">Gestion des applications</span><br/>
-            <span class="section_title_subtext">Ici, installez, supprimez ou ajoutez de nouvelles application à votre saedbox</span>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
-    <!-- Tooltip jQuery -->
-    <script>
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-    </script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
-	<script src="https://unpkg.com/vue/dist/vue.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.1.1/vue-resource.min.js"></script>
-	<script src="./app.js"></script>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
   </body>
 </html>
