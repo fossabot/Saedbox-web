@@ -7,7 +7,6 @@ import App from './components/App.vue'
 import Login from './components/Auth.vue'
 import Home from './components/Home.vue'
 
-require('bootstrap-loader');
 require('font-awesome-loader');
 
 const router = new VueRouter({

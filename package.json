@@ -5,6 +5,7 @@
   "author": "Saedbox Team",
   "private": true,
   "scripts": {
+    "postinstall": "./fix-bootstrap-loader.sh",
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src"
