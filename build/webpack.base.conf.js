@@ -4,6 +4,11 @@ var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 var bootstrapEntryPoints = require('./webpack.bootstrap.config.js')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+if (process.env.NODE_ENV == "production") {
+  var Bse = bootstrapEntryPoints.prod;
+} else {
+  var Bse = bootstrapEntryPoints.dev;
+}
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -11,9 +16,9 @@ function resolve (dir) {
 
 module.exports = {
   entry: [
-    'tether',
     'font-awesome-loader',
-    bootstrapEntryPoints.dev,
+    Bse,
+    'tether',
     './src/main.js'
   ],
   output: {
@@ -72,8 +77,27 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       },
-      {test: /bootstrap\/dist\/js\/umd\//, loader: 'imports-loader?jQuery=jquery'}
-      
+      {
+        test: /bootstrap\/dist\/js\/umd\//,
+        loader: 'imports-loader?jQuery=jquery'
+      },
+      {
+      test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]' +
+          '!postcss-loader',
+        }),
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]__[hash:base64:5]' +
+            '!postcss-loader' +
+          '!sass-loader',
+        }),
+      }
     ]
   }
 }

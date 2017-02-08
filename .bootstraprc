@@ -6,7 +6,7 @@
 bootstrapVersion: 4
 
 # If Bootstrap version 4 is used - turn on/off flexbox model
-useFlexbox: true
+useFlexbox: false
 
 # Webpack loaders, order matters
 styleLoaders:
@@ -18,8 +18,8 @@ styleLoaders:
 # Different settings for different environments can be used,
 # It depends on value of NODE_ENV environment variable
 # This param can also be set in webpack config:
-#   entry: 'bootstrap-loader/extractStyles'
-extractStyles: false
+#entry: 'bootstrap-loader/extractStyles'
+#extractStyles: true
 # env:
 #   development:
 #     extractStyles: false
