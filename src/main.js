@@ -8,8 +8,8 @@ import auth from './utils/auth'
 
 import App from './components/App.vue'
 
-import Login from './components/Login.vue'
-import Home from './components/Home.vue'
+import Login from './templates/Login.vue'
+import Home from './templates/Home.vue'
 
 require('font-awesome-loader');
 
@@ -27,7 +27,7 @@ function requireAuth (to, from, next) {
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/home', component: Home, beforeEnter: requireAuth },
+    { path: '/home', name: 'containers', component: Home, beforeEnter: requireAuth },
     { path: '/', component: Login },
     { path: '/logout',
       beforeEnter (to, from, next) {
