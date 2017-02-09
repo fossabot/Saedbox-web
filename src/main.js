@@ -8,8 +8,8 @@ import auth from './utils/auth'
 
 import App from './components/App.vue'
 
-import Login from './templates/Login.vue'
-import Home from './templates/Home.vue'
+import Login from './components/Login.vue'
+import Home from './components/Containers.vue'
 
 require('font-awesome-loader');
 

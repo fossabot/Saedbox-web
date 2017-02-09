@@ -43,6 +43,7 @@
 
 <script>
 import auth from '../utils/auth'
+
 export default {
   data () {
     return {
@@ -66,18 +67,18 @@ export default {
 }
 </script>
 
-<style>
-
-body {
-width: 100%;
-height: 100%;
-}
+<style scoped>
 
 .body_login {
   width: 100%;
   height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   background-color: #247236;
   overflow: hidden;
+  z-index: 10000;
+  visibility: visible;
 }
 
 .container {
