@@ -1,5 +1,5 @@
 /* globals localStorage */
-
+import axios from 'axios'
 export default {
   login (email, pass, cb) {
     cb = arguments[arguments.length - 1]
@@ -35,17 +35,25 @@ export default {
   },
 
   onChange () {}
+
 }
 
 function pretendRequest (email, pass, cb) {
   setTimeout(() => {
-    if (email === 'test' && pass === 'test') {
-      cb({
-        authenticated: true,
-        token: Math.random().toString(36).substring(7)
-      })
-    } else {
-      cb({ authenticated: false })
-    }
+    axios.post('http://localhost:9000/api/login', {
+      email: email,
+      password: pass
+    }).then(response => {
+      if (response.status === 200) {
+        cb({
+          authenticated: true,
+          token: Math.random().toString(36).substring(7)
+        })
+      } else {
+        cb({ authenticated: false })
+      }
+    }, response => {
+      console.log(response.statusText)
+    })
   }, 0)
 }

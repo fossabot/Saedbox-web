@@ -58,7 +58,6 @@ export default {
         if (!loggedIn) {
           this.error = true
         } else {
-          console.log('good')
           this.$router.replace('/home')
         }
       })

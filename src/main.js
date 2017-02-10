@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueResource from 'vue-resource'
+import Axios from 'axios'
 Vue.use(VueRouter)
-Vue.use(VueResource)
 
 import auth from './utils/auth'
 
@@ -40,6 +39,5 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router,
-  // replace the content of <div id="app"></div> with App
   render: h => h(App)
 })
