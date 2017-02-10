@@ -1,60 +1,59 @@
 /* globals localStorage */
 import axios from 'axios'
+import { API_URL } from '../config/app'
+
 export default {
+
+  user: {
+    authenticated: false
+  },
+
   login (email, pass, cb) {
-    cb = arguments[arguments.length - 1]
-    if (localStorage.token) {
-      if (cb) cb(true)
-      this.onChange(true)
-      return
-    }
-    pretendRequest(email, pass, (res) => {
-      if (res.authenticated) {
-        localStorage.token = res.token
+    LoginRequest(email, pass, (res) => {
+      this.user.authenticated = res.authenticated
+      if (this.user.authenticated) {
+        console.log('ok')
         if (cb) cb(true)
-        this.onChange(true)
       } else {
+        console.log('pasok')
         if (cb) cb(false)
-        this.onChange(false)
       }
     })
   },
 
-  getToken () {
-    return localStorage.token
+  checkAuth () {
+    if (getAuth()) {
+      this.authenticated = true
+    } else {
+      this.authenticated = false
+    }
   },
 
   logout (cb) {
-    delete localStorage.token
+    this.user.authenticated = false
     if (cb) cb()
-    this.onChange(false)
-  },
-
-  loggedIn () {
-    return !!localStorage.token
-  },
-
-  onChange () {}
-
+  }
 }
 
-function pretendRequest (email, pass, cb) {
-  setTimeout(() => {
-    axios.post('http://dev.saedbox.pw:9000/api/login', {
-      email: email,
-      password: pass
-    }).then(response => {
-      console.log(response)
-      if (response.status === 200) {
-        cb({
-          authenticated: true,
-          token: Math.random().toString(36).substring(7)
-        })
-      } else {
-        cb({ authenticated: false })
-      }
-    }, response => {
-      console.log(response.statusText)
-    })
-  }, 0)
+function LoginRequest (email, pass, cb) {
+  axios.post(API_URL + '/api/login', {
+    email: email,
+    password: pass
+  }).then(response => {
+    if (response.status === 200) {
+      cb({ authenticated: true })
+    } else {
+      cb({ authenticated: false })
+    }
+  }, response => {
+    cb({ authenticated: false })
+  })
+}
+
+function getAuth (cb) {
+  axios.get(API_URL + '/me').then(response => {
+    return true
+  }, response => {
+    return false
+  })
 }

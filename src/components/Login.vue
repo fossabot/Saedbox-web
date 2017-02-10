@@ -54,8 +54,8 @@ export default {
   },
   methods: {
     login () {
-      auth.login(this.email, this.pass, loggedIn => {
-        if (!loggedIn) {
+      auth.login(this.email, this.pass, checkAuth => {
+        if (!checkAuth) {
           this.error = true
         } else {
           this.$router.replace('/')

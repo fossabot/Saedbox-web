@@ -10,6 +10,7 @@ var shell = require('shelljs')
 var webpack = require('webpack')
 var config = require('../config')
 var webpackConfig = require('./webpack.prod.conf')
+cp(path.resolve(__dirname, '../src/config/prod/*'), path.resolve(__dirname, '../src/config/'))
 
 var spinner = ora('building for production...')
 spinner.start()

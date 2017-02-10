@@ -1,4 +1,5 @@
 require('./check-versions')()
+require('shelljs/global')
 
 var config = require('../config')
 if (!process.env.NODE_ENV) {
@@ -11,6 +12,8 @@ var express = require('express')
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
+
+cp(path.resolve(__dirname, '../src/config/dev/*'), path.resolve(__dirname, '../src/config/'))
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
