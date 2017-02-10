@@ -58,7 +58,7 @@ export default {
         if (!loggedIn) {
           this.error = true
         } else {
-          this.$router.replace('/home')
+          this.$router.replace('/')
         }
       })
     }

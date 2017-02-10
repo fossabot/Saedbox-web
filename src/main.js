@@ -15,7 +15,7 @@ require('font-awesome-loader');
 function requireAuth (to, from, next) {
   if (!auth.loggedIn()) {
     next({
-      path: '/',
+      path: '/login',
       query: { redirect: to.fullPath }
     })
   } else {
@@ -26,8 +26,8 @@ function requireAuth (to, from, next) {
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/home', name: 'containers', component: Home, beforeEnter: requireAuth },
-    { path: '/', component: Login },
+    { path: '/', name: 'containers', component: Home, beforeEnter: requireAuth },
+    { path: '/login', component: Login },
     { path: '/logout',
       beforeEnter (to, from, next) {
         auth.logout()
