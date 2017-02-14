@@ -8,13 +8,13 @@
           <h3 class="panel-title">Login</h3>
       </div>
         <div class="panel-body">
-          <form accept-charset="UTF-8" role="form">
+          <form accept-charset="UTF-8" @submit.prevent="login">
                   <fieldset>
               <div class="form-group">
-                <input class="form-control" placeholder="E-mail" name="email" type="text">
+                <input class="form-control" v-model="email" placeholder="E-mail" name="email" type="text">
             </div>
             <div class="form-group">
-              <input class="form-control" placeholder="Password" name="password" type="password" value="">
+              <input class="form-control" v-model="pass" placeholder="Password" name="password" type="password" value="">
             </div>
             <div class="form-group otp">
               <input class="form-control" placeholder="OTP Password" name="otppassword" type="password" value="">
@@ -42,21 +42,42 @@
 </template>
 
 <script>
+import auth from '../utils/auth'
 
+export default {
+  data () {
+    return {
+      email: '',
+      pass: '',
+      error: false
+    }
+  },
+  methods: {
+    login () {
+      auth.login(this.email, this.pass, checkAuth => {
+        if (!checkAuth) {
+          this.error = true
+        } else {
+          this.$router.push('/')
+        }
+      })
+    }
+  }
+}
 </script>
 
-<style>
-
-body {
-width: 100%;
-height: 100%;
-}
+<style scoped>
 
 .body_login {
   width: 100%;
   height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   background-color: #247236;
   overflow: hidden;
+  z-index: 10000;
+  visibility: visible;
 }
 
 .container {
