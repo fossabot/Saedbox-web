@@ -12,10 +12,8 @@ export default {
     LoginRequest(email, pass, (res) => {
       this.user.authenticated = res.authenticated
       if (this.user.authenticated) {
-        console.log('login ok')
         if (cb) cb(true)
       } else {
-        console.log('login pas ok')
         if (cb) cb(false)
       }
     })
@@ -23,16 +21,14 @@ export default {
 
   checkAuth (cb) {
     axios.get(API_URL + '/me', header).then(response => {
-      console.log('check ok')
       cb(true)
     }, response => {
-      console.log('check pas ok')
       cb(false)
     })
   },
 
   logout (cb) {
-    axios.get(API_URL + '/logout', header).then(response => {
+    axios.get(API_URL + '/api/logout', header).then(response => {
       this.user.authenticated = false
       if (cb) cb()
     }, response => {
