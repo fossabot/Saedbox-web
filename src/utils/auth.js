@@ -12,34 +12,45 @@ export default {
     LoginRequest(email, pass, (res) => {
       this.user.authenticated = res.authenticated
       if (this.user.authenticated) {
-        console.log('ok')
+        console.log('login ok')
         if (cb) cb(true)
       } else {
-        console.log('pasok')
+        console.log('login pas ok')
         if (cb) cb(false)
       }
     })
   },
 
-  checkAuth () {
-    if (getAuth()) {
-      this.authenticated = true
-    } else {
-      this.authenticated = false
-    }
+  checkAuth (cb) {
+    axios.get(API_URL + '/me', header).then(response => {
+      console.log('check ok')
+      cb(true)
+    }, response => {
+      console.log('check pas ok')
+      cb(false)
+    })
   },
 
   logout (cb) {
-    this.user.authenticated = false
-    if (cb) cb()
+    axios.get(API_URL + '/logout', header).then(response => {
+      this.user.authenticated = false
+      if (cb) cb()
+    }, response => {
+      console.log('logout error')
+    })
   }
 }
+
+var header =
+  {
+    withCredentials: true
+  }
 
 function LoginRequest (email, pass, cb) {
   axios.post(API_URL + '/api/login', {
     email: email,
     password: pass
-  }).then(response => {
+  }, header).then(response => {
     if (response.status === 200) {
       cb({ authenticated: true })
     } else {
@@ -47,13 +58,5 @@ function LoginRequest (email, pass, cb) {
     }
   }, response => {
     cb({ authenticated: false })
-  })
-}
-
-function getAuth (cb) {
-  axios.get(API_URL + '/me').then(response => {
-    return true
-  }, response => {
-    return false
   })
 }

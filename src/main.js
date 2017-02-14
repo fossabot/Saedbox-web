@@ -13,14 +13,17 @@ import Home from './components/Containers.vue'
 require('font-awesome-loader');
 
 function requireAuth (to, from, next) {
-  if (!auth.checkAuth()) {
-    next({
-      path: '/login',
-      query: { redirect: to.fullPath }
+    auth.checkAuth(function(response){
+        if (!response){
+            next({
+            path: '/login',
+            query: { redirect: to.fullPath }
+          })
+        }
+        else {
+          next()
+        }
     })
-  } else {
-    next()
-  }
 }
 
 const router = new VueRouter({

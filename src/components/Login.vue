@@ -58,7 +58,8 @@ export default {
         if (!checkAuth) {
           this.error = true
         } else {
-          this.$router.replace('/')
+          console.log('yeah')
+          this.$router.go('/')
         }
       })
     }
