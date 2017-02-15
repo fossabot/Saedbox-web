@@ -20,7 +20,7 @@
         <li><a href="#">File Manager</a></li>
         <li><span class="titre_menu">Statistiques du serveur</span></a></li>
   <div id="system">
-        <div class="text-xs-left" id="example-caption-1">CPU : %</div>
+        <div class="text-xs-left" id="example-caption-1">CPU : {{ system.CPU.avgload }} %</div>
         <progress class="progress progress-success" value="cpu" max="100"></progress><br/>
         <div class="text-xs-left" id="example-caption-1">RAM :%</div>
         <progress class="progress progress-danger" value="ram" max="100"></progress>
@@ -37,6 +37,27 @@
 </template>
 
 <script>
+import System from '../utils/system'
+import Auth from '../utils/auth'
+
+export default {
+  created () {
+    this.fetchData()
+  },
+  methods: {
+    fetchData () {
+      if (!Auth.checkAuth) {
+        console.log('test')
+        this.error = true
+      } else {
+        System.Get(function (this, response) {
+          this.system = response
+        })
+      }
+    }
+  }
+}
+
 </script>
 
 
