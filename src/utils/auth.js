@@ -1,6 +1,4 @@
-/* globals localStorage */
-import axios from 'axios'
-import { API_URL } from '../config/app'
+import api from './api'
 
 export default {
 
@@ -20,39 +18,22 @@ export default {
   },
 
   checkAuth (cb) {
-    axios.get(API_URL + '/me', header).then(response => {
-      cb(true)
-    }, response => {
-      cb(false)
+    api.Get('/me', function (response, error) {
+      cb(!error)
     })
   },
 
   logout (cb) {
-    axios.get(API_URL + '/api/logout', header).then(response => {
-      this.user.authenticated = false
-      if (cb) cb()
-    }, response => {
-      console.log('logout error')
+    api.Get('/api/logout', function (response, error) {
+      cb ? cb() : null
+      error ? console.log('logout error') : null
     })
   }
 }
 
-var header =
-  {
-    withCredentials: true
-  }
-
 function LoginRequest (email, pass, cb) {
-  axios.post(API_URL + '/api/login', {
-    email: email,
-    password: pass
-  }, header).then(response => {
-    if (response.status === 200) {
-      cb({ authenticated: true })
-    } else {
-      cb({ authenticated: false })
-    }
-  }, response => {
-    cb({ authenticated: false })
+  api.Post('/api/login', { email: email, password: pass }, function (response, error) {
+    cb ? cb({ authenticated: true }) : null
+    error ? console.log('Login Error') : null
   })
 }
