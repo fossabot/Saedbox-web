@@ -20,10 +20,10 @@
         <li><a href="#">File Manager</a></li>
         <li><span class="titre_menu">Statistiques du serveur</span></a></li>
   <div id="system">
-        <div class="text-xs-left" id="example-caption-1">CPU : %</div>
-        <progress class="progress progress-success" value="cpu" max="100"></progress><br/>
-        <div class="text-xs-left" id="example-caption-1">RAM :%</div>
-        <progress class="progress progress-danger" value="ram" max="100"></progress>
+        <div class="text-xs-left" id="example-caption-1">CPU : {{ CpuLoad }} %</div>
+        <progress class="progress progress-success" :value="CpuLoad" max="100"></progress><br/>
+        <div class="text-xs-left" id="example-caption-1">RAM : {{ system.RAM.percentage_used }}%</div>
+        <progress class="progress progress-danger" :value="system.RAM.percentage_used" max="100"></progress>
         <div class="text-xs-left" id="example-caption-1"></div>
         <progress class="progress progress-success" value="disk" max="100"></progress>
   </div>
@@ -37,6 +37,50 @@
 </template>
 
 <script>
+import System from '../utils/system'
+import Auth from '../utils/auth'
+
+export default {
+  data: function () {
+    return {
+      system: {
+        CPU: {
+          avgload: ''
+        },
+        RAM: {
+          percentage_used: ''
+        }
+      }
+    }
+  },
+  mounted: function () {
+    this.fetchData()
+    setInterval(function () {
+      this.fetchData()
+    }.bind(this), 10000)
+  },
+  computed: {
+    CpuLoad: function () {
+      return Math.round(this.system.CPU.avgload)
+    }
+  },
+  methods: {
+    fetchData () {
+      if (!Auth.checkAuth) {
+        console.log('test')
+        this.error = true
+      } else {
+        var self = this
+        this.$nextTick(function () {
+          System.Get(function (response) {
+            self.system = response
+          })
+        })
+      }
+    }
+  }
+}
+
 </script>
 
 
