@@ -41,19 +41,17 @@ import System from '../utils/system'
 import Auth from '../utils/auth'
 
 export default {
-  created () {
-    this.fetchData()
+  data: {
+    system: {}
   },
-  methods: {
-    fetchData () {
-      if (!Auth.checkAuth) {
-        console.log('test')
-        this.error = true
-      } else {
-        System.Get(function (this, response) {
-          this.system = response
-        })
-      }
+  ready: function () {
+    var self = this
+    if (!Auth.checkAuth) {
+      this.error = true
+    } else {
+      System.Get(function (response) {
+        self.system = response
+      })
     }
   }
 }

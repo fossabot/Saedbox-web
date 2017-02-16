@@ -2,9 +2,9 @@ import api from './api'
 
 export default {
 
-  Get (context, cb) {
+  Get (cb) {
     api.Get('/api/system', function (response, error) {
-      response ? cb(response.data.data, context) : null
+      response ? cb(response.data.data) : null
       error ? console.log('System error') : null
     })
   }
