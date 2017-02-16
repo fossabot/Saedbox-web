@@ -41,17 +41,29 @@ import System from '../utils/system'
 import Auth from '../utils/auth'
 
 export default {
-  data: {
-    system: {}
+  created: function () {
+    this.system = {
+      CPU: {
+        avgload: 0
+      }
+    }
   },
-  ready: function () {
-    var self = this
-    if (!Auth.checkAuth) {
-      this.error = true
-    } else {
-      System.Get(function (response) {
-        self.system = response
-      })
+  mounted: function () {
+    this.fetchData()
+    console.log(this.system)
+  },
+  methods: {
+    fetchData () {
+      if (!Auth.checkAuth) {
+        console.log('test')
+        this.error = true
+      } else {
+        /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "temp" }] */
+        var self = this
+        System.Get(function (response) {
+          self.system = response
+        })
+      }
     }
   }
 }
