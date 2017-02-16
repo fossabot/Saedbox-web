@@ -20,10 +20,10 @@
         <li><a href="#">File Manager</a></li>
         <li><span class="titre_menu">Statistiques du serveur</span></a></li>
   <div id="system">
-        <div class="text-xs-left" id="example-caption-1">CPU : {{ system.CPU.avgload }} %</div>
-        <progress class="progress progress-success" value="cpu" max="100"></progress><br/>
-        <div class="text-xs-left" id="example-caption-1">RAM :%</div>
-        <progress class="progress progress-danger" value="ram" max="100"></progress>
+        <div class="text-xs-left" id="example-caption-1">CPU : {{ CpuLoad }} %</div>
+        <progress class="progress progress-success" :value="CpuLoad" max="100"></progress><br/>
+        <div class="text-xs-left" id="example-caption-1">RAM : {{ system.RAM.percentage_used }}%</div>
+        <progress class="progress progress-danger" :value="system.RAM.percentage_used" max="100"></progress>
         <div class="text-xs-left" id="example-caption-1"></div>
         <progress class="progress progress-success" value="disk" max="100"></progress>
   </div>
@@ -41,16 +41,28 @@ import System from '../utils/system'
 import Auth from '../utils/auth'
 
 export default {
-  created: function () {
-    this.system = {
-      CPU: {
-        avgload: 0
+  data: function () {
+    return {
+      system: {
+        CPU: {
+          avgload: ''
+        },
+        RAM: {
+          percentage_used: ''
+        }
       }
     }
   },
   mounted: function () {
     this.fetchData()
-    console.log(this.system)
+    setInterval(function () {
+      this.fetchData()
+    }.bind(this), 10000)
+  },
+  computed: {
+    CpuLoad: function () {
+      return Math.round(this.system.CPU.avgload)
+    }
   },
   methods: {
     fetchData () {
@@ -58,10 +70,11 @@ export default {
         console.log('test')
         this.error = true
       } else {
-        /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "temp" }] */
         var self = this
-        System.Get(function (response) {
-          self.system = response
+        this.$nextTick(function () {
+          System.Get(function (response) {
+            self.system = response
+          })
         })
       }
     }
