@@ -66,8 +66,9 @@ export default {
   },
   methods: {
     fetchData () {
-      if (!Auth.checkAuth) {
-        console.log('test')
+      if (!Auth.checkAuth(function (response) {
+        return response
+      })) {
         this.error = true
       } else {
         var self = this
