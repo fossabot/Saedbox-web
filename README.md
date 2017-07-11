@@ -23,7 +23,6 @@ npm run build --report
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ## Licensing
-=========
 Saedbox is licensed under the MIT License. See
 [LICENSE](https://github.com/saedbox/saedbox/blob/master/LICENSE) for the full
 license text.
