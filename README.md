@@ -1,8 +1,9 @@
-# saedbox
+# Saedbox Web Interface
 
-> Saedbox Web interface
+This repo contain all the front-end of Saedbox. Including some html/css experiments. For more information about Saedbox you can go here : https://github.com/saedbox/saedbox
 
-## Build Setup
+
+## Build Setup (dev)
 
 ``` bash
 # install dependencies
@@ -19,3 +20,7 @@ npm run build --report
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## License
+
+To be added
