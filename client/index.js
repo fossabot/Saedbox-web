@@ -9,6 +9,8 @@ import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 /*eslint-enable no-unused-vars*/
 import Routes from './routes';
 
+import './index.css';
+
 ReactDOM.render(
   <Routes/>,
   document.getElementById('root')
